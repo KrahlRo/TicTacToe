@@ -2,32 +2,35 @@ package MVC;
 
 public class Model {
 
-    int[][] array;
-    String symbol;
-    int counter;
+    int[][] gameGrid;
+    int turnCounter;
+    String token;
 
-    public Model(){
+    public Model () {
 
-        counter = 0;
-        array = initialize(new int[3][3]);
+        //constructor
+        turnCounter = 0;
+        gameGrid = initializeGameGrid(new int[3][3]);
     }
 
-    public void setChoice(){
+    public void setPlayer () {
 
-        if (counter % 2 == 0){
-            symbol = "X";
-        }else{
-            symbol = "O";
+        //sets the player token dependent on the current turn counter
+        if (turnCounter % 2 == 0) {
+            token = "X";//
+        } else {
+            token = "O";//
         }
-        counter++;
+        turnCounter++;
     }
 
-    private static int[][] initialize(int[][] array) {
+    private static int[][] initializeGameGrid (int[][] array) {
 
-        //fill the empty array with spaces
-        for(int counterInnerArray = 0; counterInnerArray < array.length; counterInnerArray++) {
-            for(int counterElem = 0; counterElem < array[0].length; counterElem++)
-                array[counterInnerArray][counterElem] = 0;
+        //fills the empty game grid with nulls
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                array[i][j] = 0;
+            }
         }
         return array;
     }

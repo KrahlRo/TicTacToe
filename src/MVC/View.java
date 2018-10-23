@@ -4,42 +4,45 @@ import java.util.Scanner;
 public class View {
 
     Model model;
-    int[] coordinates = new int[2];
+    int[] coordinates;
 
     public View (Model model) {
 
+        //constructor
         this.model = model;
+        coordinates = new int[2];
     }
 
-    public int[] IO () {
+    public void IO () {
 
+        //manages the user in- and outputs
+        printGameGrid(model.gameGrid);//
         Scanner scanner = new Scanner(System.in);
-        System.out.println("player " + model.symbol + "\ninput x-coordinate(0-2)");
+        System.out.println("player " + model.token + "\ninput x-coordinate(0-2)");
         coordinates[0] = scanner.nextInt();
         System.out.println("input y-coordinate(0-2)");
         coordinates[1] = scanner.nextInt();
-        printGrid(model.array);
-        return coordinates;
     }
 
-    private static void printGrid (int[][] array) {
+    private static void printGameGrid (int[][] array) {
 
-        for (int counterInnerArray = 0; counterInnerArray < array.length; counterInnerArray++) {
-            String singleLine = "";
-            for (int counterElem = 0; counterElem < array[0].length; counterElem++) {
-                if (array[counterInnerArray][counterElem] == 0){
-                    singleLine += " ";
-                } else if (array[counterInnerArray][counterElem] == 1) {
-                    singleLine += "X";
+        //prints out the game grid in characters
+        for (int i = 0; i < array.length; i++) {
+            StringBuilder singleLine = new StringBuilder();
+            for (int j = 0; j < array[0].length; j++) {
+                if (array[i][j] == 0) {
+                    singleLine.append(" ");
+                } else if (array[i][j] == 1) {
+                    singleLine.append("X");
                 } else {
-                    singleLine += "O";
+                    singleLine.append("O");
                 }
-                if (counterElem < array[0].length - 1){
-                    singleLine += "|";
+                if (j < array[0].length - 1) {
+                    singleLine.append("|");
                 }
             }
             System.out.println(singleLine);
-            if (counterInnerArray < 2){
+            if (i < 2) {
                 System.out.println("-----");
             }
         }
