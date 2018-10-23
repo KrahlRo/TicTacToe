@@ -4,34 +4,23 @@ public class Model {
 
     int[][] gameGrid;
     int turnCounter;
-    String token;
+    Token playerToken;
 
     public Model () {
 
         //constructor
         turnCounter = 0;
-        gameGrid = initializeGameGrid(new int[3][3]);
+        gameGrid = new int[3][3];
     }
 
-    public void setPlayer () {
+    public void setToken () {
 
-        //sets the player token dependent on the current turn counter
+        //sets the Token dependent on the turn counter
         if (turnCounter % 2 == 0) {
-            token = "X";//
+            playerToken = Token.X;//
         } else {
-            token = "O";//
+            playerToken = Token.O;//
         }
         turnCounter++;
-    }
-
-    private static int[][] initializeGameGrid (int[][] array) {
-
-        //fills the empty game grid with nulls
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                array[i][j] = 0;
-            }
-        }
-        return array;
     }
 }

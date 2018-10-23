@@ -15,17 +15,8 @@ public class Controller {
     public void update () {
 
         //updates a specific digit in the game grid dependent on the given coordinates
-        if (view.coordinates[1] == 0) {//
-            view.coordinates[1] = 2;
-        } else if (view.coordinates[1] == 2) {
-            view.coordinates[1] = 0;
-        }
-        if (model.gameGrid[view.coordinates[1]][view.coordinates[0]] == 0) {
-            if (model.token.equals("X")) {//
-                model.gameGrid[view.coordinates[1]][view.coordinates[0]] = 1;
-            } else {
-                model.gameGrid[view.coordinates[1]][view.coordinates[0]] = -1;
-            }
+        if (model.gameGrid[view.coordinates[1]][view.coordinates[0]] == Token.EMPTY.getValue()) {
+            model.gameGrid[view.coordinates[1]][view.coordinates[0]] = model.playerToken.getValue();
         } else {
             System.out.println("cell is already filled!");
         }

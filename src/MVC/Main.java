@@ -9,11 +9,11 @@ public class Main {
         Controller controller = new Controller(model, view);
 
         while (model.turnCounter < 10) {
-            model.setPlayer();
+            model.setToken();
             view.IO();
             controller.update();
             if (controller.checker()){
-                System.out.println("player " + model.token + " won!");
+                System.out.println("player " + model.playerToken + " won!");
                 System.exit(1);
             }
         System.out.println("draw");

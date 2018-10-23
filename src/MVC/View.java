@@ -18,7 +18,7 @@ public class View {
         //manages the user in- and outputs
         printGameGrid(model.gameGrid);//
         Scanner scanner = new Scanner(System.in);
-        System.out.println("player " + model.token + "\ninput x-coordinate(0-2)");
+        System.out.println("player " + model.playerToken.getSymbol() + "\ninput x-coordinate(0-2)");
         coordinates[0] = scanner.nextInt();
         System.out.println("input y-coordinate(0-2)");
         coordinates[1] = scanner.nextInt();
@@ -30,12 +30,12 @@ public class View {
         for (int i = 0; i < array.length; i++) {
             StringBuilder singleLine = new StringBuilder();
             for (int j = 0; j < array[0].length; j++) {
-                if (array[i][j] == 0) {
-                    singleLine.append(" ");
-                } else if (array[i][j] == 1) {
-                    singleLine.append("X");
+                if (array[i][j] == Token.EMPTY.getValue()) {
+                    singleLine.append(Token.EMPTY.getSymbol());
+                } else if (array[i][j] == Token.X.getValue()) {
+                    singleLine.append(Token.X.getSymbol());
                 } else {
-                    singleLine.append("O");
+                    singleLine.append(Token.O.getSymbol());
                 }
                 if (j < array[0].length - 1) {
                     singleLine.append("|");
