@@ -16,9 +16,9 @@ public class Controller {
         //update a specific location in the array
         if (model.array[view.coordinates[1]][view.coordinates[0]] == 0) {
             if (model.symbol.equals("X")) {
-                model.array[view.coordinates[1]][view.coordinates[0]] = 1;
+                model.array[view.coordinates[1]][view.coordinates[0]] = 1;//
             } else {
-                model.array[view.coordinates[1]][view.coordinates[0]] = -1;
+                model.array[view.coordinates[1]][view.coordinates[0]] = -1;//
             }
         } else {
             System.out.println("cell is already filled!");

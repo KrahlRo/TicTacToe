@@ -9,7 +9,6 @@ public class View {
     public View (Model model) {
 
         this.model = model;
-        printGrid(this.model.array);
     }
 
     public int[] IO () {

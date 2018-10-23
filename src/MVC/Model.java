@@ -6,10 +6,10 @@ public class Model {
     String symbol;
     int counter;
 
-    public Model(int size){
+    public Model(){
 
         counter = 0;
-        array = initialize(new int[size][size]);
+        array = initialize(new int[3][3]);
     }
 
     public void setChoice(){
@@ -19,10 +19,6 @@ public class Model {
         }else{
             symbol = "O";
         }
-    }
-
-    public void increaseCounter(){
-
         counter++;
     }
 
