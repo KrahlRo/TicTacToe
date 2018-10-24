@@ -15,6 +15,14 @@ public class Controller {
     public void update () {
 
         //updates a specific digit in the game grid dependent on the given coordinates
+        switch (view.coordinates[1]) {
+            case 0:
+                view.coordinates[1] = 2;
+                break;
+            case 2:
+                view.coordinates[1] = 0;
+                break;
+        }
         if (model.gameGrid[view.coordinates[1]][view.coordinates[0]] == Token.EMPTY.getValue()) {
             model.gameGrid[view.coordinates[1]][view.coordinates[0]] = model.playerToken.getValue();
         } else {
@@ -34,10 +42,10 @@ public class Controller {
         if (Math.abs(diagonalAscendingSum) == 3 || Math.abs(diagonalDescendingSum) == 3) {
             return true;
         }
-        for (int i = 0; i < model.gameGrid[0].length; i++) {
+        for (int i = 0; i < model.gameGrid.length; i++) {
             int rowSum = 0;
             int columnsSum = 0;
-            for (int j = 0; j <= 2; j++) {
+            for (int j = 0; j < model.gameGrid.length; j++) {
                 rowSum += model.gameGrid[i][j];
                 columnsSum += model.gameGrid[j][i];
             }
