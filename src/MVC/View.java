@@ -15,7 +15,7 @@ public class View {
 
     public void IO () {
 
-        //manages the user in- and outputs
+        //calls the 'printGameGrid' method and lets the user do his inputs (coordinates of a cell)
         printGameGrid(model.gameGrid);//
         Scanner scanner = new Scanner(System.in);
         System.out.println("player " + model.playerToken.getSymbol() + "\ninput x-coordinate(0-2)");

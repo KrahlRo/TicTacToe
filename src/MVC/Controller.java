@@ -14,15 +14,8 @@ public class Controller {
 
     public void update () {
 
-        //updates a specific digit in the game grid dependent on the given coordinates
-        switch (view.coordinates[1]) {
-            case 0:
-                view.coordinates[1] = 2;
-                break;
-            case 2:
-                view.coordinates[1] = 0;
-                break;
-        }
+        //updates a specific cell in the game grid dependent on the partly reverse changed coordinates
+        view.coordinates[1] = reverseChanger(view.coordinates[1]);
         if (model.gameGrid[view.coordinates[1]][view.coordinates[0]] == Token.EMPTY.getValue()) {
             model.gameGrid[view.coordinates[1]][view.coordinates[0]] = model.playerToken.getValue();
         } else {
@@ -54,5 +47,20 @@ public class Controller {
             }
         }
         return false;
+    }
+
+    private static int reverseChanger (int yCoordinate) {
+
+        /*reverse changes the value of the y-coordinate,
+        because the game grid structure doesn't match the one of a coordinate system*/
+        switch (yCoordinate) {
+            case 0:
+                yCoordinate = 2;
+                break;
+            case 2:
+                yCoordinate = 0;
+                break;
+        }
+        return yCoordinate;
     }
 }
