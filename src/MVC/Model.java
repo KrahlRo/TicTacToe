@@ -2,9 +2,9 @@ package MVC;
 
 public class Model {
 
-    int[][] gameGrid;
-    int turnCounter;
-    Token playerToken;
+    private int[][] gameGrid;
+    public int turnCounter;
+    public Token playerToken;
 
     public Model () {
 
@@ -22,5 +22,11 @@ public class Model {
             playerToken = Token.O;//
         }
         turnCounter++;
+    }
+
+    public int[][] getGameGrid () {
+
+        //getter gameGrid
+        return gameGrid;
     }
 }

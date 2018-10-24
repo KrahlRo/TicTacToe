@@ -3,8 +3,9 @@ import java.util.Scanner;
 
 public class View {
 
-    Model model;
-    int[] coordinates;
+    private Model model;
+    private int[] coordinates;
+    int[][] gameGrid = model.getGameGrid();
 
     public View (Model model) {
 
@@ -16,7 +17,7 @@ public class View {
     public void IO () {
 
         //calls the 'printGameGrid' method and lets the user do his inputs (coordinates of a cell)
-        printGameGrid(model.gameGrid);//
+        printGameGrid(gameGrid);//
         Scanner scanner = new Scanner(System.in);
         System.out.println("player " + model.playerToken.getSymbol() + "\ninput x-coordinate(0-2)");
         coordinates[0] = scanner.nextInt();
@@ -26,7 +27,7 @@ public class View {
 
     private static void printGameGrid (int[][] array) {
 
-        //prints out the game grid in characters
+        //prints out the game grid visually in characters
         for (int i = 0; i < array.length; i++) {
             StringBuilder singleLine = new StringBuilder();
             for (int j = 0; j < array[0].length; j++) {
@@ -46,5 +47,11 @@ public class View {
                 System.out.println("-----");
             }
         }
+    }
+
+    public int[] getCoordinates () {
+
+        //getter coordinates
+        return coordinates;
     }
 }

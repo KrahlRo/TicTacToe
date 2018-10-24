@@ -2,8 +2,11 @@ package MVC;
 
 public class Controller {
 
-    Model model;
-    View view;
+    private Model model;
+    private View view;
+
+    int[][] gameGrid = model.getGameGrid();
+    int [] coordinates = view.getCoordinates();
 
     public Controller (Model model, View view) {
 
@@ -15,9 +18,9 @@ public class Controller {
     public void update () {
 
         //updates a specific cell in the game grid dependent on the partly reverse changed coordinates
-        view.coordinates[1] = reverseChanger(view.coordinates[1]);
-        if (model.gameGrid[view.coordinates[1]][view.coordinates[0]] == Token.EMPTY.getValue()) {
-            model.gameGrid[view.coordinates[1]][view.coordinates[0]] = model.playerToken.getValue();
+        coordinates[1] = reverseChanger(coordinates[1]);
+        if (gameGrid[coordinates[1]][coordinates[0]] == Token.EMPTY.getValue()) {
+            gameGrid[coordinates[1]][coordinates[0]] = model.playerToken.getValue();
         } else {
             System.out.println("cell is already filled!");
         }
@@ -28,19 +31,19 @@ public class Controller {
         //checks if the game status is determined
         int diagonalAscendingSum = 0;
         int diagonalDescendingSum = 0;
-        for (int i = 0; i < model.gameGrid.length; i++) {
-            diagonalAscendingSum += model.gameGrid[i][i];
-            diagonalDescendingSum += model.gameGrid[i][2 - i];
+        for (int i = 0; i < gameGrid.length; i++) {
+            diagonalAscendingSum += gameGrid[i][i];
+            diagonalDescendingSum += gameGrid[i][2 - i];
         }
         if (Math.abs(diagonalAscendingSum) == 3 || Math.abs(diagonalDescendingSum) == 3) {
             return true;
         }
-        for (int i = 0; i < model.gameGrid.length; i++) {
+        for (int i = 0; i < gameGrid.length; i++) {
             int rowSum = 0;
             int columnsSum = 0;
-            for (int j = 0; j < model.gameGrid.length; j++) {
-                rowSum += model.gameGrid[i][j];
-                columnsSum += model.gameGrid[j][i];
+            for (int j = 0; j < gameGrid.length; j++) {
+                rowSum += gameGrid[i][j];
+                columnsSum += gameGrid[j][i];
             }
             if (Math.abs(rowSum) == 3 || Math.abs(columnsSum) == 3) {
                 return true;
